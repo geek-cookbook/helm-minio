@@ -121,6 +121,11 @@ deployment:
   updateStrategy:
     type: Recreate
 
+  ## Set any annotations intended specifically for the deployment (not the pods)
+  ## One potential use-case is applying annotations to the deployment itself for a static-analysis
+  ## tool, such as kube-score, which relies on annotations to identify which built-in tests to skip
+  annotations: {}
+
 ## MinIO statefulset parameters
 ## Only when mode is 'distributed'
 ##
@@ -138,6 +143,12 @@ statefulset:
   ## Number of replicas, it must even and greater than 4
   ##
   replicaCount: 4
+
+  ## Set any annotations intended specifically for the deployment (not the pods)
+  ## One potential use-case is applying annotations to the deployment itself for a static-analysis
+  ## tool, such as kube-score, which relies on annotations to identify which built-in tests to skip
+  annotations: {}
+
 
 ## Use existing secret (ignores accessKey, and secretKey passwords)
 ##

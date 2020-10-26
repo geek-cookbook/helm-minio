@@ -7,6 +7,10 @@ metadata:
   name: {{ include "minio.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels: {{- include "minio.labels" . | nindent 4 }}
+  {{- if .Values.statefulset.annotations }}
+  annotations:
+  {{- include "minio.tplValue" ( dict "value" .Values.statefulset.annotations "context" $) | nindent 4 }}
+  {{- end }}    
 spec:
   selector:
     matchLabels: {{- include "minio.matchLabels" . | nindent 6 }}
